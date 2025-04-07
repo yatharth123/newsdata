@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Full Process of Pre-Processing for News Dataset</a></li>
+							<li><a href="#three">Get in touch</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>NEWS DATASET</h1>
+							<p>In this project, we conducted an in-depth analysis of a comprehensive global news dataset.
+								 This dataset encompasses several columns, each representing distinct attributes of the news articles, 
+								 such as source, title, content ,description and other columns as well. The objective of this analysis was to uncover meaningful patterns,
+								 trends, and insights that could contribute to a better understanding of global news dynamics.
+								 </p>
+                                 <p>The raw dataset used for this analysis is provided through the following link: </p>
+								 <p>
+								  <a href="https://www.dropbox.com/scl/fi/dwlynpcfnqlmi8tsqwcwf/data.csv?rlkey=yc1p756x6rgr1mfnuxa3uj5st&st=s3nqdnb3&dl=0">NEWS DATASET</a>.</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Handling Unknown Categories and Missing Data</h2>
+									<p>During the analysis of the global news dataset, it was observed that several entries contained unknown categories and country information. 
+										Additionally, a significant portion of the dataset had missing values across various columns. These inconsistencies posed challenges for 
+										data analysis, as they could potentially affect the accuracy and reliability of the insights derived.
+										To address these issues, data cleaning and pre-processing techniques were applied. This included identifying and handling missing values,
+										categorizing unknown entries appropriately, and ensuring consistency in the dataset to facilitate accurate analysis.
+										</p>
+									<ul class="actions">
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Country Identification Using SpaCy Library</h2>
+									<p> To accurately identify the country associated with each news article in the global news dataset, the spaCy library was utilized. spaCy’s pre-trained models, namely en_core_web_sm, en_core_web_md, and en_core_web_lg, were systematically applied to the title, content, and description columns. The approach involved the following key steps:</p>
+									<p>	1.) Named Entity Recognition (NER) for Country Extraction:
+										spaCy’s NER capabilities were employed to detect and extract country names from the textual data. This process involved identifying entities labeled as geopolitical entities (GPE), which typically include country names, cities, and regions.</p>
+									<p>	2.) Frequency-Based Ranking:
+										After extracting potential country names, a frequency-based ranking method was applied. This technique prioritized countries mentioned most frequently within the article's title, content, and description, thereby identifying the primary country associated with the news.</p>
+									<p>	3.)	Edge Case Handling:
+											No Country Detected: If the NER process failed to identify any country, a default value of "Unknown" was assigned to ensure completeness in the dataset.
+											Multiple Countries Identified: In cases where multiple countries were detected with equal frequency, additional rules were applied. This included selecting the first mentioned country or incorporating contextual analysis to determine the most relevant country.</p>
+									<p>	4.)	Results Storage:
+										The extracted primary country for each news article was stored in a new column within the dataset. This enabled seamless integration with further analytical processes, such as geographic trend analysis and country-specific content evaluation.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/b7m9shmxgw1gv4n6x29cb/en_core_web_sm_model.py?rlkey=etbbsat4x2s5zyh79d8t088vk&st=qzovveh7&dl=0">EN_CORE_WEB_SM_SCRIPT</a>.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/k0l4167muj9dvvle0zk60/web_sm_updated_newsdataset.csv?rlkey=xgjxx0h7ht21q4t21rdttyf8e&st=02xd1zfe&dl=0">EN_CORE_WEB_SM_DATASET</a>.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/oxel12y33ehbario5iwdp/en_core_web_md_model.py?rlkey=9kev6l18xscnmmw204eqinp4y&st=apzgt3pd&dl=0">EN_CORE_WEB_MD_SCRIPT</a>.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/9ganh2fh96f0whfdie4a6/web_md_updated_newsdataset.csv?rlkey=19u9x35t52gudyaimuhw751ey&st=bt19y0sz&dl=0">EN_CORE_WEB_MD_DATASET</a>.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/9t5e6quy1kfbqhy7jpvcj/en_core_web_lg_model.py?rlkey=hg72rhjkdf2b0gb1683w08n6i&st=mrn7ps91&dl=0">EN_CORE_WEB_LG_SCRIPT</a>.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/w3u5bnykdjf0kr1exffv0/web_lg_updated_newsdataset.csv?rlkey=qebwiri9a9djfpp5iudtkbd70&st=8qmh3ilw&dl=0">EN_CORE_WEB_LG_DATASET</a>.</p>
+										<ul class="actions">
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Model Accuracy Evaluation</h2>
+									<p>Following the country identification process, the accuracy of the models was systematically evaluated to ensure the
+									   reliability of the results. The evaluation involved testing the performance of spaCy's pre-trained models: en_core_web_sm,
+									   en_core_web_md, and en_core_web_lg.
+									</p>
+									<p>Accuracy Check Methodology:
+										The accuracy assessment was conducted by applying the models to a combination of the following data columns:
+										<p>• Title</p>
+										<p>• Content</p>
+										<p>• Description</p>
+									 The evaluation process for the accuracy check included the following steps:
+								    </p>
+                                  <p>1.)Combination-Based Testing:
+                                     To enhance the robustness of the accuracy check, the models were also tested in combination with different data columns. 
+									 This approach helped identify which model performed best under varying conditions and data contexts.</p>
+								<p>  2.)Coherence Check and Model Selection:
+									 The coherence check involved comparing the performance of each model in terms of accuracy, consistency, and reliability when extracting 
+									 country names from the dataset. The analysis revealed that the models en_core_web_sm and en_core_web_lg demonstrated the highest coherence, 
+									 consistently yielding accurate and reliable country identification results.</p>
+								  <p>3.)Result Analysis:
+                                     The results from each model and combination were analyzed to identify patterns,strengths,and areas for improvement.
+									 This analysis guided the selection of the most effective models for country identification in the final implementation.
+                                     Through this rigorous evaluation process, the most accurate and efficient model combination was determined,
+									 ensuring reliable country identification across the global news dataset.
+                                     Will add the code snipper as follows:
+									</p>
+									<p><a href="https://www.dropbox.com/scl/fi/n75ah87sbszynqiarwo28/accuracychecknowresetted.py?rlkey=s4kqressmr30ohe7x66zod5q6&st=qnh4el7o&dl=0">DATASET_SELECTED_THROUGH_MODELS_SCRIPT</a>.</p>
+									<p><a href="https://www.dropbox.com/scl/fi/he40g6akhl3txyfyfo7yx/common_rows_finalfile_aftertheaccuracycheck.csv?rlkey=s2irqsavwfk96uwcc32c2eiwh&st=cgq0kwrv&dl=0">ACTUAL_DATASET_SELECTED_THROUGH_MODELS_FROM_ABOVE_SCRIPT</a>.</p>
+									<ul class="actions">
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Topic Modelling and Category Identification Using NLTK AND GENSIM LIBRARY</h2>
+									<p>To extract meaningful insights from the global news dataset, topic modelling techniques were employed using the GENSIM and the NLTK library. The primary goal was to identify the underlying themes and categorize the news articles effectively. The following methodologies were utilized:</p>
+									<p> 1.)	Latent Dirichlet Allocation (LDA):
+										LDA was applied to uncover latent topics within the dataset. This probabilistic model helped in identifying groups of words that frequently appear together, thus revealing the central themes present across different news articles.</p>
+									<p> 2.)	Term Frequency-Inverse Document Frequency (TF-IDF):
+										TF-IDF was used to evaluate the importance of words in relation to the entire dataset. By emphasizing terms that are significant in specific articles but not common across all content, TF-IDF enhanced the precision of topic identification.</p>
+									<p> 3.)	Topic Modelling and Category Identification:
+										The topic modelling process involved integrating LDA and TF-IDF with preconceived data centered around specific topics. This approach facilitated the accurate classification of news articles into relevant categories. Additionally, tokenization techniques were applied to pre-process the data, enabling more effective modelling and category detection.
+										These techniques collectively contributed to a robust framework for analyzing and categorizing the global news data, enabling the extraction of insightful patterns and trends.</p> 
+										</p>
+									<p>	These techniques collectively contributed to a robust framework for analyzing and categorizing the global news data, enabling the extraction of insightful patterns and trends.</p>
+									<p><a href="https://www.dropbox.com/scl/fi/eptbp84sq1kak0yxhr0ut/Topic-Modelling.ipynb?rlkey=sl2v1xe8r1w470k71uvlozywl&st=5fx869vf&dl=0">TOPIC_MODELLING_DATASET_SCRIPT</a>.</p>
+									<p><a href="https://www.dropbox.com/scl/fi/2oxciut247iuhpdmcaha9/Topicmodellingdatasetfile.csv?rlkey=o26puqts0edg4qe8vqhc2eo8r&st=vl7mt9bs&dl=0">ACTUAL_DATASET_SELECTED_THROUGH_TOPIC_MODELLING_FROM_ABOVE_SCRIPT</a>.</p>
+									<ul class="actions">
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Data Cleaning and Pre-processing</h2>
+									<p>
+										Following the initial analysis, a comprehensive deep cleaning of the dataset was performed. This stage focused on:
+										<p>	•	Removal of Duplicate Entries: Ensuring each record is unique to maintain data integrity.</p>
+										<p>	•	Data Cleaning: Addressing missing values, correcting typos, and standardizing formats.</p>
+										<p> •	Alignment of Data: Rectifying any misalignments in data entries to ensure consistency across all columns.</p>
+										<p> •	Consistency Checks: Validating data entries to identify and correct inconsistencies in naming conventions, data types, and formatting.</p>
+										
+										<p><a href="https://www.dropbox.com/scl/fi/y2xe5zg5dqkfj6rmggt6j/Duplicates-removal.ipynb?rlkey=wnr2achyqhh6e2c5b07fca8m3&st=zaws44fk&dl=0">DUPLICATES_REMOVAL_IN_THE_DATASET_SCRIPT</a>.</p>
+										<p><a href="https://www.dropbox.com/scl/fi/7oeycrys1zlgx2ddu8831/cleaned_file_duplicates_removed2_fullfileupdatednowfinal.csv?rlkey=ujj0a489etfq07jap4qeivg5i&st=maze3adp&dl=0">AFTER_THE_DUPLICATES_REMOVAL_IN_THE_DATASET</a>.</p>
+									</p>
+									<ul class="actions">
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Clustering Analysis for Category/Country Column Using K-Means,PCA,and Using Evaluation Metrics In Unsupervised Dataset </h2>
+									<p>For the data analysis,PCA and K-Means clustering was applied to identify inherent groupings within the dataset.
+									   The clustering results were evaluated using the Silhouette Score, which measures the similarity of an object to its own cluster 
+									   compared to other clusters.</p>
+									   <p> 
+									   The Silhouette Score is a measure used to evaluate the quality of clustering results. It ranges from -1 to 1, where:</p>
+									   <p>      •	+1 indicates that the data points are well-clustered, with clear separation between clusters.</p>
+									   <p>      •	0 suggests that the data points are on or very close to the decision boundary between clusters, indicating overlapping clusters.</p>
+                                       <p>      •	-1 implies that the data points may have been assigned to the wrong clusters, as they are closer to points in other clusters than their own.</p>
+									   <p> The application of PCA and K-Means clustering to the category/country column played a crucial role in enhancing data clarity. By predicting clusters within the dataset,
+										   the algorithm facilitated the identification of distinct groupings that were not immediately apparent. This process helped to:</p>
+									      <p>   •	Accurately Identify Correct Clusters: The clustering results highlighted natural groupings in the data, which aligned with the underlying patterns in the category column.</p>
+									      <p>   •	Resolve Ambiguities: The predicted clusters addressed some of the existing ambiguities in the dataset, enabling a more coherent categorization of data points.</p>
+									      <p>   •	Improve Data Consistency: By uncovering hidden structures, the analysis supported better data alignment and consistency across the dataset.</p>
+										  <p><a href="https://www.dropbox.com/scl/fi/vbctb0wbipujeiwy5ooni/Silhouette-Score.ipynb?rlkey=uyro0mygwkmujiyc6l7o5cp8c&st=83e5jocc&dl=0">Unsupervised_Data_Analysis_Using_Silhouette_Score_On_Category_And_Country_Column_Full_Script</a>.</p>
+									<ul class="actions">
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				
+				<!-- Three -->
+					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+								<section>
+									<ul class="contact">
+										<li>
+											<h3>Email</h3>
+											<a href="#">yatharthvarshney100@gmail.com</a>
+										</li>
+										<li>
+											<h3>Phone</h3>
+											<span>+919458416545</span>
+										</li>
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
